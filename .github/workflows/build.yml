@@ -61,6 +61,6 @@ jobs:
         asset_url=$(curl -X POST \
           -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
           -H "Content-Type: application/octet-stream" \
-          --data-binary "@game-unlocker-v${{ steps.version.outputs.app_version }}.apk" \
-          "https://uploads.github.com/repos/${{ github.repository }}/releases/$release_id/assets?name=game-unlocker-v${{ steps.version.outputs.app_version }}.apk")
+          --data-binary "@Potato-unlocker-🥔-v${{ steps.version.outputs.app_version }}.apk" \
+          "https://uploads.github.com/repos/${{ github.repository }}/releases/$release_id/assets?name=Potato-unlocker-🥔-v${{ steps.version.outputs.app_version }}.apk")
         echo "Uploaded asset: $asset_url"
