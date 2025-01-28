@@ -46,7 +46,7 @@ jobs:
 
     - name: Create Release
       id: create_release
-      uses: actions/create-release@v2
+      uses: actions/create-release@v1
       with:
         files: Potato-unlocker-🥔-v${{ steps.version.outputs.app_version }}.apk
         tag_name: ${{ steps.version.outputs.app_version }}
