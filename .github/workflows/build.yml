@@ -42,13 +42,13 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Game Unlocker
-        path: Potato-unlocker-🥔-v${{ steps.version.outputs.app_version }}.apk
+        path: Potato-unlocker-v${{ steps.version.outputs.app_version }}.apk
 
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       with:
-        files: Potato-unlocker-🥔-v${{ steps.version.outputs.app_version }}.apk
+        files: Potato-unlocker-v${{ steps.version.outputs.app_version }}.apk
         tag_name: Potato-unlocker-v2
         release_name: Potato-unlocker-v2
         prerelease: false
@@ -61,6 +61,6 @@ jobs:
         asset_url=$(curl -X POST \
           -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
           -H "Content-Type: application/octet-stream" \
-          --data-binary "@Potato-unlocker-🥔-v${{ steps.version.outputs.app_version }}.apk" \
-          "https://uploads.github.com/repos/${{ github.repository }}/releases/$release_id/assets?name=Potato-unlocker-🥔-v${{ steps.version.outputs.app_version }}.apk")
+          --data-binary "@Potato-unlocker-v${{ steps.version.outputs.app_version }}.apk" \
+          "https://uploads.github.com/repos/${{ github.repository }}/releases/$release_id/assets?name=Potato-unlocker-v${{ steps.version.outputs.app_version }}.apk")
         echo "Uploaded asset: $asset_url"
