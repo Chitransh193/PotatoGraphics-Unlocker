@@ -28,7 +28,10 @@ public class GAMEUNLOCKER implements IXposedHookLoadPackage {
         "com.rekoo.pubgm",
         "com.pubg.imobile",
         "com.tencent.gam",
-        "com.tencent.iglite",
+        "com.tencent.iglite"
+    };
+
+    private static final String[] packagesToChange120FPS = {
         "tp.fps90",
         "tq.tech.Fps"
     };
@@ -43,6 +46,11 @@ public class GAMEUNLOCKER implements IXposedHookLoadPackage {
             propsToChangeSamsungGalaxyOn7();
             XposedBridge.log("Spoofed " + packageName + " as Samsung Galaxy On7");
         }
+
+        if (Arrays.asList(packagesToChange120FPS).contains(packageName)) {
+            propsToChange120FPS();
+            XposedBridge.log("Spoofed " + packageName + " as Samsung Galaxy On7 120FPS");
+        }
     }
 
     // samsung
@@ -50,6 +58,12 @@ public class GAMEUNLOCKER implements IXposedHookLoadPackage {
     private static void propsToChangeSamsungGalaxyOn7() {
         setPropValue("MANUFACTURER", "samsung");
         setPropValue("MODEL", "SM-G600S");
+    }
+
+    private static void propsToChange120FPS() {
+        setPropValue("MANUFACTURER", "samsung");
+        setPropValue("MODEL", "SM-G600S");
+        setPropValue("DEVICE", "SM-G600FY");
     }
 
     private static void setPropValue(String key, Object value) {
