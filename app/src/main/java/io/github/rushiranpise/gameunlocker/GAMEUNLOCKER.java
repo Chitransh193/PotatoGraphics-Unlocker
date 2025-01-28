@@ -29,6 +29,8 @@ public class GAMEUNLOCKER implements IXposedHookLoadPackage {
         "com.pubg.imobile",
         "com.tencent.gam",
         "com.tencent.iglite"
+        "tp.fps90",
+        "tq.tech.Fps"
     };
 
     @Override
