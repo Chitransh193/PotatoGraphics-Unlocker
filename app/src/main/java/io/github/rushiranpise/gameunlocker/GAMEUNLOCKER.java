@@ -33,7 +33,8 @@ public class GAMEUNLOCKER implements IXposedHookLoadPackage {
 
     private static final String[] packagesToChange120FPS = {
         "tp.fps90",
-        "tq.tech.Fps"
+        "tq.tech.Fps",
+        "inc.trilokia.pubgfxtool"
     };
 
     @Override
