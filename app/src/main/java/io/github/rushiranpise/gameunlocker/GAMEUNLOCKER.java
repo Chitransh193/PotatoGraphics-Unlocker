@@ -60,12 +60,14 @@ public class GAMEUNLOCKER implements IXposedHookLoadPackage {
         setPropValue("BRAND", "samsung");
         setPropValue("MANUFACTURER", "samsung");
         setPropValue("MODEL", "SM-A013F");
+        setPropValue("DEVICE", "a01core");
     }
 
     private static void propsToChange120FPS() {
         setPropValue("BRAND", "samsung");
         setPropValue("MANUFACTURER", "samsung");
         setPropValue("MODEL", "SM-A013F");
+        setPropValue("DEVICE", "a01core");
     }
 
     private static void setPropValue(String key, Object value) {
