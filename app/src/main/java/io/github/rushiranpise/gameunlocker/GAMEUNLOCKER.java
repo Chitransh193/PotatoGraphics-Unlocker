@@ -55,19 +55,17 @@ public class GAMEUNLOCKER implements IXposedHookLoadPackage {
     }
 
     // samsung
-    // Props to Spoof as Samsung Galaxy On7
+    // Props to Spoof as Samsung Galaxy A01Core
     private static void propsToChangeSamsungGalaxyOn7() {
         setPropValue("BRAND", "samsung");
         setPropValue("MANUFACTURER", "samsung");
-        setPropValue("MODEL", "SM-G600S");
-        setPropValue("DEVICE", "SM-G600FY");
+        setPropValue("MODEL", "SM-A013F");
     }
 
     private static void propsToChange120FPS() {
         setPropValue("BRAND", "samsung");
         setPropValue("MANUFACTURER", "samsung");
-        setPropValue("MODEL", "SM-G600S");
-        setPropValue("DEVICE", "SM-G600FY");
+        setPropValue("MODEL", "SM-A013F");
     }
 
     private static void setPropValue(String key, Object value) {
