@@ -1,13 +1,13 @@
-name: Build Apk
+name: Build and Release APK
 on: [workflow_dispatch]
 
 jobs:
-  build:
+  build-and-release:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4  # Updated to latest version
 
     - name: Sign with debug key
       run: |
@@ -15,11 +15,11 @@ jobs:
         curl -so- https://raw.githubusercontent.com/artem-zinnatullin/RxJavaProGuardRules/master/rxjava-proguard-rules/proguard-rules.txt | tee -a ./app/proguard-rules.pro
         cat ./app/proguard-rules.pro
 
-    - name: Set up JDK 11
-      uses: actions/setup-java@v2
+    - name: Set up JDK 17  # Updated to LTS version
+      uses: actions/setup-java@v3
       with:
-        java-version: '11'
-        distribution: 'adopt'
+        java-version: '17'
+        distribution: 'temurin'  # Eclipse Temurin is the new AdoptOpenJDK
         cache: gradle
 
     - name: Grant execute permission for gradlew
@@ -33,34 +33,27 @@ jobs:
 
     - name: Get App Version Name
       id: version
-      run: echo "::set-output name=app_version::$(grep versionName app/build.gradle | sed -n 's/.*versionName \"\([0-9.]*\)\".*/\1/p')"
+      run: |
+        VERSION=$(grep versionName app/build.gradle | awk -F\" '{print $2}')
+        echo "app_version=${VERSION}" >> $GITHUB_OUTPUT
 
     - name: Rename APK
       run: mv app/build/outputs/apk/debug/app-debug.apk Potato-unlocker-v${{ steps.version.outputs.app_version }}.apk
 
-    - name: Upload APK
+    - name: Upload APK as artifact
       uses: actions/upload-artifact@v4
       with:
-        name: Game Unlocker
+        name: Game-Unlocker-${{ steps.version.outputs.app_version }}
         path: Potato-unlocker-v${{ steps.version.outputs.app_version }}.apk
 
     - name: Create Release
       id: create_release
-      uses: actions/create-release@v1
+      uses: softprops/action-gh-release@v1  # More maintained alternative
       with:
-        files: Potato-unlocker-v${{ steps.version.outputs.app_version }}.apk
-        tag_name: Potato-unlocker-V3
-        release_name: Potato-unlocker-V3
+        tag_name: v${{ steps.version.outputs.app_version }}
+        name: Potato Unlocker ${{ steps.version.outputs.app_version }}
+        body: Automatic release of Potato Unlocker
         prerelease: false
+        files: Potato-unlocker-v${{ steps.version.outputs.app_version }}.apk
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Upload Release Assets
-      run: |
-        release_id=${{ steps.create_release.outputs.id }}
-        asset_url=$(curl -X POST \
-          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          -H "Content-Type: application/octet-stream" \
-          --data-binary "@Potato-unlocker-v${{ steps.version.outputs.app_version }}.apk" \
-          "https://uploads.github.com/repos/${{ github.repository }}/releases/$release_id/assets?name=Potato-unlocker-v${{ steps.version.outputs.app_version }}.apk")
-        echo "Uploaded asset: $asset_url"
