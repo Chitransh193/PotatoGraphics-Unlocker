@@ -44,8 +44,8 @@ public class GAMEUNLOCKER extends XposedModule {
     private static void applyDeviceProfile() {
         setPropValue("BRAND", "samsung");
         setPropValue("MANUFACTURER", "samsung");
-        setPropValue("MODEL", "SM-A300H");
-        setPropValue("DEVICE", "a33g");
+        setPropValue("MODEL", "SM-G600S");
+        setPropValue("DEVICE", "SM-G600FY");
     }
 
     private static void setPropValue(String key, Object value) {
