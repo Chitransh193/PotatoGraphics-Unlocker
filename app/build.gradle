@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'io.github.rushiranpise.gameunlocker'
+    namespace 'io.github.Chitransh193.PotatoUnlocker'
     compileSdk 34
 
     defaultConfig {
-        applicationId "io.github.rushiranpise.gameunlocker"
+        applicationId "io.github.Chitransh193.PotatoUnlocker"
         minSdk 29
         targetSdk 34
         versionCode 5
