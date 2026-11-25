@@ -1,4 +1,4 @@
-package io.github.rushiranpise.gameunlocker;
+package io.github.Chitransh193.PotatoUnlocker;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
