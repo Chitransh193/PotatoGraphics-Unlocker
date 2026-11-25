@@ -27,7 +27,8 @@ public class GAMEUNLOCKER extends XposedModule {
             "com.pubg.imobile",
             "com.tencent.gam",
             "com.tencent.iglite",
-            "com.tencent.igfit"
+            "com.tencent.igfit",
+            "com.krafton.bgmilite"
     ));
 
     @Override
