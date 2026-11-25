@@ -10,8 +10,8 @@ android {
         applicationId "io.github.Chitransh193.PotatoUnlocker"
         minSdk 29
         targetSdk 34
-        versionCode 5
-        versionName "10.0.0"
+        versionCode 6
+        versionName "10.1.0"
     }
 
     buildTypes {
@@ -31,6 +31,6 @@ android {
 }
 
 dependencies {
-    compileOnly 'io.github.libxposed:api:101.0.1'
+    compileOnly 'io.github.libxposed:api:102.0.0'
     compileOnly 'androidx.annotation:annotation:1.8.2'
 }

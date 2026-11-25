@@ -23,7 +23,7 @@ To get started with Low Texture Unlocker, follow these steps:
 
 1. Ensure that your Android device is rooted.
 
-2. Install LSPosed (v2.0.1 or newer) on your device.
+2. 2. Install LSPosed (v2.0.3 or newer) on your device.
    
 3. Download the Potato Unlocker module from the [releases section]
 
